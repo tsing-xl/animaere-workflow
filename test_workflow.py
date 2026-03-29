@@ -1,4 +1,4 @@
-from .__init__ import Workflow, Task, consts
+from __init__ import Workflow, Task, consts
 
 def test_workflow(*kw) -> None:
     print(' *** Testing with workflow by default...')
