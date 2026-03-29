@@ -87,7 +87,7 @@ class Task:
                 raise InvaildTaskOrSchedule('No task was setted or None was passed incorrectly')
 
         # Task type
-        self.task_type: Union[str, ] = task_config('task_type', TYPE_ANY)
+        self.task_type: Union[str, ] = task_config.get('task_type', TYPE_ANY)
     
     def initialize_task(self) -> None:
         '''Used to initialize the task, to be sure there's no NoneType object contains. All value will be set to default.'''
