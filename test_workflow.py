@@ -1,9 +1,9 @@
-from animaere_workflow import Workflow, Task, consts
+from animaere_workflow import workflow
 
 def test_workflow(*kw) -> None:
     print(' *** Testing with workflow by default...')
-    _wf = Workflow()
+    _wf = workflow.Workflow()
 
 def test_task(*kw) -> None:
     print(' *** Testing with task...')
-    _tk = Task('default-task-name', warning_level = consts.EXCEPTION_JUST_NOTIFY)
+    _tk = workflow.Task('default-task-name', warning_level = EXCEPTION_JUST_NOTIFY)
