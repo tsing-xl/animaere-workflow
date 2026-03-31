@@ -41,7 +41,7 @@ class Handler:
             success_reason: Union[str, None] = None, 
             *kw: Any, 
     ) -> None:
-        logout(f'task {task_name_or_uuid} -> handler.success_action_handler', 3, f'Action successed: {success_reason}')
+        logout(f'task {task_name_or_uuid} -> handler.success_action_handler', 0, f'Action successed: {success_reason}')
     
     def more_fail_action_handler(
             task_name_or_uuid: Union[str, None] = None, 

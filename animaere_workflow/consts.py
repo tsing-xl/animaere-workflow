@@ -10,8 +10,10 @@ EXCEPTION_JUST_NOTIFY = 'exc-just-notify'
 PLACEHOLDER_EMPTY_TASK = 'ph-empty-task'
 
 # Type
+TYPE_TASK = '~tk@'
+TYPE_SCHEDULE = '~sh@'
 TYPE_LOCAL_FUNCTION = '~lf@'
 TYPE_LIBRARY_FUNCTION = '~lib@'
-TYPE_EXTERNAL_PROGRAM = '~ep@'
-TYPE_NETWORK_REQUEST = '~nwr@'
+TYPE_EXTERNAL_PROGRAM = '~ext@'
+TYPE_NETWORK_REQUEST = '~net@'
 TYPE_ANY = '~any@'

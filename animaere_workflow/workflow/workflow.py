@@ -2,7 +2,7 @@
 # Date: 26.03.26
 # Version: 0
 
-from typing import Callable
+from typing import Callable, Union
 from uuid import uuid4
 from ..logging.log4a import logout
 from ..handler.handler import *
@@ -27,13 +27,13 @@ class Workflow:
 
         # Basic settings of workflow.
         self.workflow_name: str = workflow_name
-        self.workflows: list | tuple = []
+        self.workflows: Union[list, tuple] = []
         self.token: str = '_token'
         
         # If false, any changes of workflow will strictly rejected.
         self._read_only: bool = False
 
-    def create_new_task(self, task_name: str | Callable) -> bool:
+    def create_new_task(self, task_name: Union[Callable, ], task_index: int = -1) -> bool:
         '''Create a new task in your workflow.'''
 
         # if task name is a callable object.
@@ -44,43 +44,15 @@ class Workflow:
         elif isinstance(task_name, str): task_name = '~any@' + str(task_name)
 
         # TODO: Add safety protection in future version. (security-fix)
-        # FIXME: Replace this to task.Task object.
-        task: dict = {
-                'uuid': uuid4(), # Task uuid, used to track. 
-                'task-name': task_name, # The task name.
-                'optional': 'optional',  # TODO: Add optional params.
-                
-                # Task settings & perfomances.
-                'set-action-after-fail': None, # None | Callable | ... | str
-                'set-action-after-success': None, # None | Callable | ... | str
-                'set-action-after-more-fails': None, # None | Callable | ... | str
-                'set-action-before-execute': None, # None | Callable | ... | str
-                'set-action-error-handler': None, # None | Callable | ... | str
-
-                # Task hooks & tools.
-                'task-skip-control': None, # None | Callable | Task
-                'task-depencies': [], # None | list | tuple | Task (None will automatically turns to [].)
-                
-                # Future features
-                # 'task-input': [], # list
-                # 'task-output': [], # list
-                
-                # Task info.
-                'task-execute-counter': 0, # int
-                'task-success-counter': 0, # int
-                'task-fail-counter': 0, # int
-                'task-version': 1, # int | str
-                'task-description': '', # str (any -> str)
-        }
 
         # Debug
-        logout('workflow.workflow', 0, f'Task: {task}')
+        # logout('workflow.workflow', 0, f'Task: {task}')
 
         # Warnings if using an [any] workflow.
-        if task['task-name'].startswith('~any@'): logout('workflow.workflow', 2, 'Try functions or workflow.Task instead of an [any] workflow.')
+        # if task['task-name'].startswith('~any@'): logout('workflow.workflow', 2, 'Try functions or workflow.Task instead of an [any] workflow.')
 
         # Append the task into workflow.
-        self.workflows.append(task)
+        # self.workflows.append(task)
 
     @property
     def read_only(self) -> bool: return self._read_only

@@ -10,3 +10,9 @@ class InvaildWorkflow(BaseException):
 
 class FailedToExecuteTaskOrSchedule(BaseException):
     '''Throws when a task/schedule execute incorrectly.'''
+
+# --- New features
+
+class InvalidTask(BaseException): None
+class InvalidSchedule(BaseException): None
+class InvalidWorkflow(BaseException): None
